@@ -1,0 +1,19 @@
+<h1>ToDo Lists</h1>
+<%= List.count %>
+
+<% @lists.each do |list| %>
+    <h2><%= list.title %></h2>
+    <p>Get Done By:<br/>
+    <%= list.date %></p>
+    <% list.tasks.all.each do |task| %>
+        <%= task.title %>
+    <% end %>
+
+    <%= form_for @task do |f| %>
+        <%= f.label :title %>
+        <%= f.hidden_field :list, :value => list.id %>
+        <%= f.text_field :title %>
+        <%= f.submit "Add Task" %>
+    <% end %>
+
+<%- end %>

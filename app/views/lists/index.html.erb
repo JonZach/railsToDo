@@ -6,8 +6,13 @@
     <p>Get Done By:<br/>
     <%= list.date %></p>
     <% list.tasks.all.each do |task| %>
-        <%= task.title %>
+        <ul>
+            <li><%= task.title %></li>
+        </ul>
     <% end %>
+
+    <button><%= link_to "Delete List", list, :method => :delete, :confirm => "Deleting a list deletes all tasks in that list. Are you sure?" %></button><br /><br />
+
 
     <%= form_for @task do |f| %>
         <%= f.label :title %>
@@ -17,3 +22,12 @@
     <% end %>
 
 <%- end %>
+
+<p>Create a New ToDo List</p>
+<%= form_for @list do |f| %>
+  <%= f.label :title, "Add a new list" %>
+  <%= f.text_field :title %>
+  <%= f.label :date, "Set due date" %>
+  <%= f.text_field :date %>
+  <%= f.submit "Submit List" %>
+<% end %>

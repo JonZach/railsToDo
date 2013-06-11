@@ -1,7 +1,7 @@
 RailsToDo::Application.routes.draw do
   root to: "lists#index"
 
-  resources :tasks, only: [:index, :new, :create]
+  resources :tasks, only: [:index, :new, :create, :destroy]
   resources :lists, only: [:index, :create, :new, :destroy, :edit, :update]
   # The priority is based upon order of creation:
   # first created -> highest priority.
